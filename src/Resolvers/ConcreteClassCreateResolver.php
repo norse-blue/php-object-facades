@@ -13,7 +13,7 @@ final class ConcreteClassCreateResolver
      * Resolve how to create an object and create it.
      *
      * @param string $class
-     * @param array $parameters
+     * @param array<mixed> $parameters
      * @param int|null $constructor_params
      *
      * @return mixed

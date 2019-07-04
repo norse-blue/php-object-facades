@@ -8,7 +8,7 @@ use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeConcreteClassException;
 
 final class ConcreteClassValidator
 {
-    public static function enforce(string $class)
+    public static function enforce(string $class): void
     {
         if (!is_string($class) || $class === '' || !class_exists($class)) {
             throw new InvalidFacadeConcreteClassException('A valid facade concrete class has not been set.');
