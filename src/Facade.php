@@ -12,6 +12,7 @@ abstract class Facade
 {
     /** @var string The concrete class this facade is for. */
     protected static $concrete_class = '';
+
     /** @var int|null The number of constructor params to use to create the object. */
     protected static $constructor_params = null;
 
