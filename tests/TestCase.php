@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NorseBlue\ScalarObjects\Tests;
+namespace NorseBlue\ObjectFacades\Tests;
 
 use PHPUnit\Framework\TestCase as TestCaseBase;
 

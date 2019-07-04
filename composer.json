@@ -22,7 +22,8 @@
     "optimize-autoloader": true
   },
   "require": {
-    "php": "^7.3"
+    "php": "^7.3",
+    "norse-blue/extensible-objects": "dev-master"
   },
   "require-dev": {
     "nunomaduro/phpinsights": "^1.6",
