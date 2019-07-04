@@ -11,33 +11,44 @@ use ReflectionMethod;
 
 final class ConcreteMethodValidator
 {
-    public static function enforce(string $class, string $method, ?bool &$static = false): void
+    protected static function extensibleIsMethodStatic(string $class, string $method): bool
     {
-        if (
-            !($is_method = method_exists($class, $method))
-            && !is_subclass_of($class, Extensible::class)
+        if (!is_subclass_of($class, Extensible::class)
             && !$class::hasExtensionMethod($method)
         ) {
             throw new BadMethodCallException("The method '$method' does not exist for class '$class'.");
         }
 
+        /** @var Extensible $class */
+        return $class::getExtensionMethods()[$method]['static'];
+    }
+
+    protected static function reflectIsMethodStatic(string $class, string $method): bool
+    {
+        $reflection = new ReflectionClass($class);
+
+        return in_array(
+            $method,
+            array_map(
+                static function ($item) {
+                    /** @var ReflectionMethod $item */
+                    return $item->getName();
+                },
+                $reflection->getMethods(ReflectionMethod::IS_STATIC)
+            )
+        );
+    }
+
+    public static function enforce(string $class, string $method, ?bool &$static = false): void
+    {
+        $is_method = method_exists($class, $method);
+
         if ($is_method) {
-            $reflection = new ReflectionClass($class);
-            $static = in_array(
-                $method,
-                array_map(
-                    static function ($item) {
-                        /** @var ReflectionMethod $item */
-                        return $item->getName();
-                    },
-                    $reflection->getMethods(ReflectionMethod::IS_STATIC)
-                )
-            );
+            $static = self::reflectIsMethodStatic($class, $method);
 
             return;
         }
 
-        /** @var Extensible $class */
-        $static = $class::getExtensionMethods()[$method]['static'];
+        $static = self::extensibleIsMethodStatic($class, $method);
     }
 }
