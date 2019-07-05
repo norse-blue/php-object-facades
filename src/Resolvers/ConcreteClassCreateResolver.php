@@ -29,8 +29,6 @@ final class ConcreteClassCreateResolver
             }
         }
 
-        $constructor_params = $constructor_params ?? $params['params'];
-
-        return new $class(...array_splice($parameters, 0, $constructor_params));
+        return new $class(...array_splice($parameters, 0, $constructor_params ?? $params['params']));
     }
 }
