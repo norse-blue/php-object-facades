@@ -9,6 +9,6 @@ use RuntimeException;
 /**
  * Exception thrown when an invalid facade concrete class is defined.
  */
-final class InvalidFacadeConcreteClassException extends RuntimeException
+final class InvalidFacadeTargetClassException extends RuntimeException
 {
 }

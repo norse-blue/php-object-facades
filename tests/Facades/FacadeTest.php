@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NorseBlue\ObjectFacades\Tests\Facades;
 
 use Exception;
-use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeConcreteClassException;
+use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeTargetClassException;
 use NorseBlue\ObjectFacades\Tests\Helpers\InvalidSubjectFacade;
 use NorseBlue\ObjectFacades\Tests\Helpers\Subject;
 use NorseBlue\ObjectFacades\Tests\Helpers\SubjectExtension;
@@ -87,11 +87,11 @@ class FacadeTest extends TestCase
         try {
             InvalidSubjectFacade::unknown();
         } catch (Exception $e) {
-            $this->assertInstanceOf(InvalidFacadeConcreteClassException::class, $e);
+            $this->assertInstanceOf(InvalidFacadeTargetClassException::class, $e);
 
             return;
         }
 
-        $this->fail(InvalidFacadeConcreteClassException::class . ' was not thrown.');
+        $this->fail(InvalidFacadeTargetClassException::class . ' was not thrown.');
     }
 }
