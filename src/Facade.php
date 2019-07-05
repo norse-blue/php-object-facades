@@ -10,8 +10,8 @@ use NorseBlue\ObjectFacades\Validators\ConcreteMethodValidator;
 
 abstract class Facade
 {
-    /** @var string The concrete class this facade is for. */
-    protected static $concrete_class = '';
+    /** @var string The target class this facade is for. */
+    protected static $target_class = '';
 
     /** @var int|null The number of constructor params to use to create the object. */
     protected static $constructor_params = null;
@@ -44,7 +44,7 @@ abstract class Facade
      */
     final public static function __callStatic(string $method, array $parameters)
     {
-        $class = static::$concrete_class;
+        $class = static::$target_class;
 
         ConcreteClassValidator::enforce($class);
         static::enforceFacadeConcreteClassType($class);

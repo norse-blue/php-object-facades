@@ -14,5 +14,5 @@ use NorseBlue\ObjectFacades\Facade;
  */
 class SubjectFacade extends Facade
 {
-    protected static $concrete_class = Subject::class;
+    protected static $target_class = Subject::class;
 }
