@@ -8,5 +8,4 @@ use NorseBlue\ObjectFacades\Facade;
 
 class InvalidSubjectFacade extends Facade
 {
-
 }
