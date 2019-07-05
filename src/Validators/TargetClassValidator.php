@@ -6,7 +6,7 @@ namespace NorseBlue\ObjectFacades\Validators;
 
 use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeConcreteClassException;
 
-final class ConcreteClassValidator
+final class TargetClassValidator
 {
     public static function enforce(string $class): void
     {

@@ -7,7 +7,7 @@ namespace NorseBlue\ObjectFacades\Resolvers;
 use NorseBlue\ExtensibleObjects\Contracts\Creatable;
 use NorseBlue\ExtensibleObjects\Resolvers\ClassConstructorAccessibleResolver;
 
-final class ConcreteClassCreateResolver
+final class TargetClassCreateResolver
 {
     /**
      * Resolve how to create an object and create it.

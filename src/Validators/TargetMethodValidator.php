@@ -9,7 +9,7 @@ use NorseBlue\ExtensibleObjects\Contracts\Extensible;
 use ReflectionClass;
 use ReflectionMethod;
 
-final class ConcreteMethodValidator
+final class TargetMethodValidator
 {
     protected static function extensibleIsMethodStatic(string $class, string $method): bool
     {

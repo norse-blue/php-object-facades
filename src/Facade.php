@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace NorseBlue\ObjectFacades;
 
-use NorseBlue\ObjectFacades\Resolvers\ConcreteClassCreateResolver;
-use NorseBlue\ObjectFacades\Validators\ConcreteClassValidator;
-use NorseBlue\ObjectFacades\Validators\ConcreteMethodValidator;
+use NorseBlue\ObjectFacades\Resolvers\TargetClassCreateResolver;
+use NorseBlue\ObjectFacades\Validators\TargetClassValidator;
+use NorseBlue\ObjectFacades\Validators\TargetMethodValidator;
 
 abstract class Facade
 {
@@ -28,7 +28,7 @@ abstract class Facade
      *
      * @return void
      */
-    protected static function enforceFacadeConcreteClassType(string $class): void
+    protected static function enforceFacadeTargetClassType(string $class): void
     {
     }
 
@@ -46,15 +46,15 @@ abstract class Facade
     {
         $class = static::$target_class;
 
-        ConcreteClassValidator::enforce($class);
-        static::enforceFacadeConcreteClassType($class);
-        ConcreteMethodValidator::enforce($class, $method, $static);
+        TargetClassValidator::enforce($class);
+        static::enforceFacadeTargetClassType($class);
+        TargetMethodValidator::enforce($class, $method, $static);
 
         if ($static) {
             return $class::$method(...$parameters);
         }
 
-        $object = ConcreteClassCreateResolver::resolve($class, $parameters, static::$constructor_params);
+        $object = TargetClassCreateResolver::resolve($class, $parameters, static::$constructor_params);
 
         return $object->$method(...$parameters);
     }
