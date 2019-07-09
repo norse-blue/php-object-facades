@@ -18,7 +18,7 @@ class FacadeTest extends TestCase
     protected function setUp(): void
     {
         Subject::registerExtensionMethod('pow', SubjectExtension::class);
-        Subject::registerExtensionMethod('swapSign', SubjectStaticExtension::class, true);
+        Subject::registerExtensionMethod('swapSign', SubjectStaticExtension::class);
     }
 
     /** @test */
