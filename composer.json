@@ -23,7 +23,7 @@
   },
   "require": {
     "php": "^7.3",
-    "norse-blue/creatable-objects": "^1.0",
+    "norse-blue/creatable-objects": "^1.1",
     "norse-blue/extensible-objects": "^2.0"
   },
   "require-dev": {
