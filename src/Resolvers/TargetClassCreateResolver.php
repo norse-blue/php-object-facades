@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace NorseBlue\ObjectFacades\Resolvers;
 
-use NorseBlue\ExtensibleObjects\Contracts\Creatable;
-use NorseBlue\ExtensibleObjects\Resolvers\ClassConstructorAccessibleResolver;
+use NorseBlue\CreatableObjects\Contracts\Creatable;
+use NorseBlue\CreatableObjects\Resolvers\ConstructorResolver;
 
 final class TargetClassCreateResolver
 {
@@ -17,18 +17,22 @@ final class TargetClassCreateResolver
      * @param int|null $constructor_params
      *
      * @return mixed
-     *
-     * @throws \ReflectionException
      */
     public static function resolve(string $class, array & $parameters, ?int $constructor_params)
     {
-        if (!ClassConstructorAccessibleResolver::resolve($class, $params)) {
-            if (is_subclass_of($class, Creatable::class)) {
-                /** @var Creatable $class */
-                return $class::create();
-            }
+        if (is_subclass_of($class, Creatable::class)) {
+            /** @var Creatable $class */
+            return $class::create($parameters);
         }
 
-        return new $class(...array_splice($parameters, 0, $constructor_params ?? $params['params']));
+        $constructor = ConstructorResolver::resolve($class);
+
+        return new $class(
+            ...array_splice(
+                $parameters,
+                0,
+                $constructor_params ?? $constructor->getNumberOfRequiredParameters()
+            )
+        );
     }
 }

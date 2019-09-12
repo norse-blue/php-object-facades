@@ -39,8 +39,6 @@ abstract class Facade
      * @param array<mixed> $parameters
      *
      * @return mixed
-     *
-     * @throws \ReflectionException
      */
     final public static function __callStatic(string $method, array $parameters)
     {
