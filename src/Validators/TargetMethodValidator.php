@@ -13,14 +13,14 @@ final class TargetMethodValidator
 {
     protected static function extensibleIsMethodStatic(string $class, string $method): bool
     {
-        if (!is_subclass_of($class, Extensible::class)
-            && !$class::hasExtensionMethod($method)
+        if (is_subclass_of($class, Extensible::class)
+            && $class::hasExtensionMethod($method)
         ) {
-            throw new BadMethodCallException("The method '$method' does not exist for class '$class'.");
+            /** @var Extensible $class */
+            return $class::getExtensionMethods()[$method]['static'];
         }
 
-        /** @var Extensible $class */
-        return $class::getExtensionMethods()[$method]['static'];
+        throw new BadMethodCallException("The method '$method' does not exist for class '$class'.");
     }
 
     protected static function reflectIsMethodStatic(string $class, string $method): bool
@@ -41,9 +41,7 @@ final class TargetMethodValidator
 
     public static function enforce(string $class, string $method, ?bool &$static = false): void
     {
-        $is_method = method_exists($class, $method);
-
-        if ($is_method) {
+        if (method_exists($class, $method)) {
             $static = self::reflectIsMethodStatic($class, $method);
 
             return;
