@@ -2,9 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NorseBlue\ObjectFacades\Tests\Helpers;
+namespace NorseBlue\ObjectFacades\Tests\Helpers\Facades;
 
 use NorseBlue\ObjectFacades\Facade;
+use NorseBlue\ObjectFacades\Tests\Helpers\Objects\Subject;
 
 /**
  * @method static int mult(int $value, int $operand = 2)
@@ -12,7 +13,7 @@ use NorseBlue\ObjectFacades\Facade;
  * @method static int sum(int $a, int $b)
  * @method static int pow(int $value, int $exp)
  */
-class CreatableSubjectFacade extends Facade
+class SubjectFacade extends Facade
 {
-    protected static $target_class = CreatableSubject::class;
+    protected static $target_class = Subject::class;
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NorseBlue\ObjectFacades\Tests\Helpers;
+namespace NorseBlue\ObjectFacades\Tests\Helpers\Objects;
 
 use NorseBlue\ExtensibleObjects\Contracts\Extensible;
 use NorseBlue\ExtensibleObjects\Traits\HandlesExtensionMethods;
