@@ -12,13 +12,13 @@ final class TargetClassCreateResolver
     /**
      * Prepare the parameters for constructor call.
      *
-     * @param $class
-     * @param array $parameters
+     * @param string $class
+     * @param array<mixed> $parameters
      * @param int|null $constructor_params
      *
-     * @return array
+     * @return array<mixed>
      */
-    private static function prepareParameters($class, array & $parameters, ?int $constructor_params)
+    private static function prepareParameters(string $class, array & $parameters, ?int $constructor_params): array
     {
         if ($constructor_params === null) {
             $params = ConstructorResolver::splitParamsForConstructor($class, $parameters);
