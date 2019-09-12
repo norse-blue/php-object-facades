@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NorseBlue\ObjectFacades\Tests\Facades;
 
+use BadMethodCallException;
 use Exception;
 use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeTargetClassException;
 use NorseBlue\ObjectFacades\Tests\Helpers\Facades\CreatableSubjectFacade;
@@ -114,5 +115,19 @@ class FacadeTest extends TestCase
         }
 
         $this->fail(InvalidFacadeTargetClassException::class . ' was not thrown.');
+    }
+
+    /** @test */
+    public function it_throws_exception_when_no_valid_extension_method_is_called()
+    {
+        try {
+            SubjectFacade::unknown();
+        } catch (Exception $e) {
+            $this->assertInstanceOf(BadMethodCallException::class, $e);
+
+            return;
+        }
+
+        $this->fail(BadMethodCallException::class . ' was not thrown.');
     }
 }
