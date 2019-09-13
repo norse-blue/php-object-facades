@@ -18,9 +18,13 @@ class Subject implements Extensible
     /** @var int */
     protected $value;
 
-    public function __construct(int $value)
+    /** @var int */
+    protected $offset;
+
+    public function __construct(int $value, int $offset = 0)
     {
         $this->value = $value;
+        $this->offset = $offset;
     }
 
     public static function sum(int $a, int $b): int
@@ -30,11 +34,16 @@ class Subject implements Extensible
 
     public function mult(int $operand = 2)
     {
-        return $this->value * $operand;
+        return ($this->value * $operand) + $this->offset;
     }
 
     public function get(): int
     {
         return $this->value;
+    }
+
+    public function offset(): int
+    {
+        return $this->offset;
     }
 }

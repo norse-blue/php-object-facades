@@ -9,6 +9,7 @@ use Exception;
 use NorseBlue\ObjectFacades\Exceptions\InvalidFacadeTargetClassException;
 use NorseBlue\ObjectFacades\Tests\Helpers\Facades\CreatableSubjectFacade;
 use NorseBlue\ObjectFacades\Tests\Helpers\Facades\InvalidSubjectFacade;
+use NorseBlue\ObjectFacades\Tests\Helpers\Facades\SubjectCompleteFacade;
 use NorseBlue\ObjectFacades\Tests\Helpers\Facades\SubjectFacade;
 use NorseBlue\ObjectFacades\Tests\Helpers\Objects\Subject;
 use NorseBlue\ObjectFacades\Tests\Helpers\Objects\SubjectExtension;
@@ -61,6 +62,27 @@ class FacadeTest extends TestCase
         $this->assertEquals(9, $result_4);
         $this->assertEquals(14, $result_5);
         $this->assertEquals(21, $result_6);
+    }
+
+    /** @test */
+    public function can_call_object_method_from_facade_with_all_constructor_params()
+    {
+        $offset = 3;
+        $result_0 = SubjectCompleteFacade::mult(1000, $offset, 0);
+        $result_1 = SubjectCompleteFacade::mult(1, $offset);
+        $result_2 = SubjectCompleteFacade::mult(1, $offset, 3);
+        $result_3 = SubjectCompleteFacade::mult(3, $offset);
+        $result_4 = SubjectCompleteFacade::mult(3, $offset, 3);
+        $result_5 = SubjectCompleteFacade::mult(7, $offset);
+        $result_6 = SubjectCompleteFacade::mult(7, $offset, 3);
+
+        $this->assertEquals(0 + $offset, $result_0);
+        $this->assertEquals(2 + $offset, $result_1);
+        $this->assertEquals(3 + $offset, $result_2);
+        $this->assertEquals(6 + $offset, $result_3);
+        $this->assertEquals(9 + $offset, $result_4);
+        $this->assertEquals(14 + $offset, $result_5);
+        $this->assertEquals(21 + $offset, $result_6);
     }
 
     /** @test */
