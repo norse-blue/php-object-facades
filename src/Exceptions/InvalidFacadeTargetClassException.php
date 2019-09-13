@@ -7,7 +7,7 @@ namespace NorseBlue\ObjectFacades\Exceptions;
 use RuntimeException;
 
 /**
- * Exception thrown when an invalid facade concrete class is defined.
+ * Exception thrown when an invalid facade target class is defined.
  */
 final class InvalidFacadeTargetClassException extends RuntimeException
 {
