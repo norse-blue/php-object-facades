@@ -1,4 +1,19 @@
+remote_theme: pmarsceill/just-the-docs
 plugins:
   - jekyll-remote-theme
-remote_theme: pmarsceill/just-the-docs
+  - jekyll-seo-tag
+
+title: "PHP Object Facades"
+description: "PHP Object Facades is a PHP library that allows you to build facades for your objects to use static calls for your object's methods."
+url: "https://norse-blue.github.io"
+baseurl: "/php-object-facades/"
+permalink: pretty
 search_enabled: true
+
+# Aux links for the upper right navigation
+aux_links:
+  "PHP Object Facades on GitHub":
+    - "//github.com/norse-blue/php-object-facades"
+
+# Google Analytics
+ga_tracking: UA-144830285-5
