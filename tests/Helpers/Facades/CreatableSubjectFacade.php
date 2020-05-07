@@ -15,5 +15,5 @@ use NorseBlue\ObjectFacades\Tests\Helpers\Objects\CreatableSubject;
  */
 class CreatableSubjectFacade extends Facade
 {
-    protected static $target_class = CreatableSubject::class;
+    protected static string $target_class = CreatableSubject::class;
 }

@@ -11,10 +11,10 @@ use NorseBlue\ObjectFacades\Validators\TargetMethodValidator;
 abstract class Facade
 {
     /** @var string The target class this facade is for. */
-    protected static $target_class = '';
+    protected static string $target_class = '';
 
     /** @var int|null The number of constructor params to use to create the object. */
-    protected static $constructor_params = null;
+    protected static ?int $constructor_params = null;
 
     /** @codeCoverageIgnore */
     final private function __construct()
@@ -22,20 +22,8 @@ abstract class Facade
     }
 
     /**
-     * Validate the facade class type.
-     *
-     * @param string $class
-     *
-     * @return void
-     */
-    protected static function enforceFacadeTargetClassType(string $class): void
-    {
-    }
-
-    /**
      * Handle static method calls.
      *
-     * @param string $method
      * @param array<mixed> $parameters
      *
      * @return mixed
@@ -55,5 +43,12 @@ abstract class Facade
         $object = TargetClassCreateResolver::resolve($class, $parameters, static::$constructor_params);
 
         return $object->$method(...$parameters);
+    }
+
+    /**
+     * Validate the facade class type.
+     */
+    protected static function enforceFacadeTargetClassType(string $class): void
+    {
     }
 }
