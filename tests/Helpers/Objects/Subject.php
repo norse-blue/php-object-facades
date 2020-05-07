@@ -16,10 +16,10 @@ class Subject implements Extensible
     use HandlesExtensionMethods;
 
     /** @var int */
-    protected $value;
+    protected int $value;
 
     /** @var int */
-    protected $offset;
+    protected int $offset;
 
     public function __construct(int $value, int $offset = 0)
     {

@@ -16,7 +16,7 @@ class CreatableSubject implements Creatable
     use HandlesObjectCreation;
 
     /** @var int */
-    protected $value;
+    protected int $value;
 
     private function __construct(int $value)
     {

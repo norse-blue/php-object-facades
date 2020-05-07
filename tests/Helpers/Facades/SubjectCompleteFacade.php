@@ -16,5 +16,5 @@ use NorseBlue\ObjectFacades\Tests\Helpers\Objects\Subject;
  */
 class SubjectCompleteFacade extends Facade
 {
-    protected static $target_class = Subject::class;
+    protected static string $target_class = Subject::class;
 }
