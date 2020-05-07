@@ -7,5 +7,4 @@ First release.
 - Added the `Facade` class to create facades.
 
 ---
-
 Previous: [Release 0.0.0](CHANGELOG-0.0.0.md)
