@@ -24,9 +24,7 @@ final class TargetMethodValidator
 
     private static function extensibleIsMethodStatic(string $class, string $method): bool
     {
-        if (is_subclass_of($class, Extensible::class)
-            && $class::hasExtensionMethod($method)
-        ) {
+        if (is_subclass_of($class, Extensible::class) && $class::hasExtensionMethod($method)) {
             return $class::getExtensionMethods()[$method]['static'];
         }
 
@@ -37,11 +35,15 @@ final class TargetMethodValidator
     {
         $reflection = new ReflectionClass($class);
 
-        return in_array($method, array_map(
-            static function ($item) {
-                return $item->getName();
-            },
-            $reflection->getMethods(ReflectionMethod::IS_STATIC)
-        ), true);
+        return in_array(
+            $method,
+            array_map(
+                static function ($item) {
+                    return $item->getName();
+                },
+                $reflection->getMethods(ReflectionMethod::IS_STATIC)
+            ),
+            true
+        );
     }
 }

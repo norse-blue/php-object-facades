@@ -22,15 +22,15 @@
     "optimize-autoloader": true
   },
   "require": {
-    "php": "^7.4",
-    "norse-blue/creatable-objects": "^2.0",
-    "norse-blue/extensible-objects": "^3.0"
+    "php": "^8.0",
+    "norse-blue/creatable-objects": "^3.0",
+    "norse-blue/extensible-objects": "^4.0"
   },
   "require-dev": {
-    "nunomaduro/phpinsights": "^1.14",
-    "phpstan/phpstan": "^0.12",
-    "phpunit/phpunit": "^9.1",
-    "squizlabs/php_codesniffer": "^3.5"
+    "nunomaduro/phpinsights": "^2.0",
+    "phpstan/phpstan": "^0.12.98",
+    "phpunit/phpunit": "^9.5",
+    "squizlabs/php_codesniffer": "^3.6"
   },
   "autoload": {
     "psr-4": {

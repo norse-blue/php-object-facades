@@ -13,10 +13,8 @@ final class TargetClassCreateResolver
      * Resolve how to create an object and create it.
      *
      * @param array<mixed> $parameters
-     *
-     * @return mixed
      */
-    public static function resolve(string $class, array &$parameters, ?int $constructor_params)
+    public static function resolve(string $class, array &$parameters, ?int $constructor_params): mixed
     {
         $params = self::prepareParameters($class, $parameters, $constructor_params);
 

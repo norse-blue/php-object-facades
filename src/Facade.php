@@ -25,10 +25,8 @@ abstract class Facade
      * Handle static method calls.
      *
      * @param array<mixed> $parameters
-     *
-     * @return mixed
      */
-    final public static function __callStatic(string $method, array $parameters)
+    final public static function __callStatic(string $method, array $parameters): mixed
     {
         $class = static::$target_class;
 
