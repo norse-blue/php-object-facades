@@ -27,4 +27,4 @@
 
 
 ---
-Previous: [Release 0.2.0](CHANGELOG-0.2.0.md)
+Previous: [Release 0.3.0](CHANGELOG-0.3.0.md)
